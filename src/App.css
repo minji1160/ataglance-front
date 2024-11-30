@@ -1,0 +1,176 @@
+.App {
+  text-align: center;
+}
+/* 기본적인 모바일 화면 비율 설정 */
+body {
+  margin: 0;
+  font-family: 'Noto Sans KR', sans-serif; /* 한글 최적화 폰트 */
+  background-color: #f7f7f7;
+}
+
+#root {
+
+  min-height: 100vh;
+  background-color: #ffffff;
+}
+
+/* 모바일 화면 고정 크기 */
+.mobile-container {
+  width: 500x; /* iPhone 기본 너비 375 */
+  height: 100%;
+  border: 1px solid #ccc; /* 화면 강조를 위해 외곽선 추가 */
+  background-color: #ffffff;
+  overflow-y: auto; /* 내용이 넘칠 경우 스크롤 */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* 스크롤 숨김 (선택 사항) */
+::-webkit-scrollbar {
+  display: none;
+}
+
+.navbar {
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  position: sticky;
+  top: 15px;
+  z-index: 1000;
+}
+
+.banner {
+  background-color: #C5D3E8;
+  padding: 25px 40px;
+  font-size: 25px;
+  font-weight: bold;
+  text-align: center;
+}
+
+.category-buttons {
+  padding: 10px 30px;
+  display: flex;
+  justify-content: left;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.category-button {
+  padding: 5px 16px;
+  border: 1px solid #d7d7d7;
+  border-radius: 10px;
+  background-color: #f7f7f7;
+  font-size: 15px;
+  color:black;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  text-decoration: none; /* 밑줄 제거 */
+}
+
+.category-button.active {
+  background-color: #C5D3E8;
+  color: #353a3e;
+}
+
+.card {
+  /* border: 1px solid #ddd; */
+  border-radius: 8px;
+  margin: 10px;
+  font-size: 15px;
+  text-align: center;
+  cursor: pointer;
+}
+.card img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+.news-grid {
+  margin-top: 20px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+  gap: 8px;
+  padding: 0px 16px 32px;
+}
+.news-detail {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 16px;
+  gap: 8px;
+}
+
+.content {
+  padding-top: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 85%;
+  max-width: 408px;
+}
+
+/* 슬라이더 컨테이너 */
+.slider-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  width: 100%;
+  max-width: 376px;
+  height: 389px;
+  margin: 16px 0;
+  overflow: hidden;
+}
+
+/* 슬라이더 이미지 */
+.slider-image {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  object-fit: cover;
+}
+
+/* 슬라이더 버튼 */
+.slider-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(124, 124, 124, 0.5);
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+}
+
+.slider-btn.left {
+  left: -10px;
+}
+
+.slider-btn.right {
+  right: -10px;
+}
+
+.ellipsis {
+  display: -webkit-box;
+  -webkit-line-clamp: 2; /* 최대 2줄로 제한 */
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: normal;
+}
+
+
+/* 전체 목록 보기 버튼 (Navbar의 추가 버튼) */
+/* button {
+  background-color: transparent;
+  border: none;
+  color: #007bff;
+  font-size: 16px;
+  cursor: pointer;
+  text-decoration: underline;
+} */
+
+
