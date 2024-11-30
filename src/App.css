@@ -29,6 +29,7 @@ body {
   display: none;
 }
 
+/* ---------------------------[banner]------------------------------- */
 .navbar {
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   position: sticky;
@@ -68,7 +69,115 @@ body {
   background-color: #C5D3E8;
   color: #353a3e;
 }
+/* ----------------------------------------------------------------- */
 
+
+
+/* ---------------------------[admin]------------------------------- */
+/* 기본 컨테이너 */
+.admin-page-container,
+.saved-news-container {
+  max-width: 500px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* 페이지 제목 */
+.page-title {
+  text-align: center;
+  font-size: 24px;
+  font-weight: bold;
+  margin: 30px;
+}
+
+/* 폼 섹션 */
+.form-section {
+  margin-bottom: 20px;
+}
+
+.form-label {
+  font-size: 16px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.form-input {
+  width: 100%;
+  padding: 10px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+/* 옵션 버튼 */
+.form-options {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.option-button {
+  padding: 10px 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #fff;
+  cursor: pointer;
+  font-size: 14px;
+  transition: all 0.3s;
+}
+
+.option-button.selected {
+  background-color: #A6AEBF;
+  color: #fff;
+  border-color: #A6AEBF;
+}
+
+.option-button:hover {
+  background-color: #f0f0f0;
+}
+
+/* 저장 버튼 */
+.save-button,
+.back-button {
+  width: 100%;
+  padding: 10px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  margin-top: 20px;
+}
+
+.save-button:hover,
+.back-button:hover {
+  background-color: #0056b3;
+}
+
+/* 저장된 뉴스 섹션 */
+.saved-news-section {
+  background-color: #fff;
+  padding: 15px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  margin-bottom: 20px;
+}
+
+.saved-news-section h3 {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+/* ----------------------------------------------------------------- */
+
+
+
+/* ---------------------------[cardnews]------------------------------- */
 .card {
   /* border: 1px solid #ddd; */
   border-radius: 8px;
@@ -153,6 +262,41 @@ body {
   right: -10px;
 }
 
+/* 전체 목록으로 돌아가는 버튼 스타일 */
+.bottom-btn-container {
+  position: fixed;
+  bottom: 35px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 50%;
+  padding: 0 16px;
+  text-align: center;
+}
+
+.bottom-btn {
+  background-color: #789DBC; /* 원하는 색상으로 변경 */
+  color: white;
+  padding: 14px 32px;
+  border: none;
+  border-radius: 20px; /* 둥근 모서리 */
+  font-size: 16px;
+  cursor: pointer;
+  width: 80%; /* 모바일 화면에 맞게 너비 설정 */
+  text-align: center;
+}
+
+.bottom-btn:hover {
+  background-color: #a2adbe; /* 호버 시 색상 변경 */
+}
+
+/* -------------------------------------------------------------------- */
+
+
+
+
+
+/* --------------------------------[etc]-------------------------------- */
+
 .ellipsis {
   display: -webkit-box;
   -webkit-line-clamp: 2; /* 최대 2줄로 제한 */
@@ -172,5 +316,7 @@ body {
   cursor: pointer;
   text-decoration: underline;
 } */
+
+/* -------------------------------------------------------------------- */
 
 

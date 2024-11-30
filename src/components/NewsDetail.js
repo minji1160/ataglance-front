@@ -62,6 +62,15 @@ const NewsDetail = () => {
           원본 영상 보기
         </a>
       </div>
+      {/* 전체 목록으로 돌아가는 버튼 */}
+      <div className="bottom-btn-container">
+          <button
+            className="bottom-btn"
+            onClick={() => navigate("/")}
+          >
+            돌아가기
+          </button>
+        </div>
       </div>
     </div>
   );
