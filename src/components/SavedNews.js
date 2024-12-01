@@ -1,6 +1,7 @@
 import React from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import Navbar from "./Navbar";
+import { mockData } from "../mockData";
 import "../App.css";
 
 const SavedNews = () => {
@@ -23,13 +24,19 @@ const SavedNews = () => {
         <div className="saved-news-section">
           <h3>등록된 내용</h3>
           <p>
-            <strong>뉴스 링크:</strong> <a href={news.source_url}>{news.source_url}</a>
+            <strong>뉴스 제목:</strong>{news.title}
           </p>
           <p>
-            <strong>카테고리:</strong> {news.category}
+            <strong>뉴스 링크:</strong> <a href={news.sourceUrl}>{news.sourceUrl}</a>
           </p>
           <p>
-            <strong>출처 방송국:</strong> {news.source_bc}
+            <strong>카테고리:</strong> {mockData.categories[news.category - 1]}
+          </p>
+          <p>
+            <strong>출처 방송국:</strong> {mockData.source_bc[news.sourceBc - 1]}
+          </p>
+          <p>
+            <strong>등록 날짜:</strong> {(news.createdAt && `${news.createdAt[0]}-${news.createdAt[1]}-${news.createdAt[2]}`)}
           </p>
         </div>
         <div className="bottom-btn-container">

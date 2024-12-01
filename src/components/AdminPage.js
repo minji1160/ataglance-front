@@ -1,41 +1,83 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Navbar from "./Navbar"; // Navbar 재활용
+import { mockData } from "../mockData";
 import "../App.css";
 
-const categories = ["경제", "사회", "IT", "생활"];
-const source_bc = ["MBC", "SBS", "KBS"];
+const OptionSelector = ({ label, options, selectedOption, setSelectedOption }) => (
+  <div className="form-section">
+    <p className="form-label">{label}</p>
+    <div className="form-options">
+      {options.map((option, index) => (
+        <button
+          key={index}
+          className={`option-button ${selectedOption === index ? "selected" : ""}`}
+          onClick={() => setSelectedOption(index)}
+        >
+          {option}
+        </button>
+      ))}
+    </div>
+  </div>
+);
 
 const AdminPage = () => {
-  const [newsLink, setNewsLink] = useState("");
+  const [newsData, setNewsData] = useState({
+    category: "", // 카테고리 인덱스를 저장
+    sourceUrl: "",
+    sourceBc: "", // 출처 인덱스를 저장
+  });
+
   const [selectedCategory, setSelectedCategory] = useState(null);
   const [selectedBroadcaster, setSelectedBroadcaster] = useState(null);
+
   const navigate = useNavigate();
 
-  const handleSubmit = () => {
-    if (!newsLink || !selectedCategory || !selectedBroadcaster) {
-      alert("모든 항목을 입력해주세요!");
-      return;
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setNewsData({
+      ...newsData,
+      [name]: value,
+    });
+  };
+
+  const handleSubmit = async () => {
+
+    try {
+      const response = await fetch("http://localhost:8080/api/news/register", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          category: selectedCategory+1,
+          sourceUrl: newsData.sourceUrl,
+          sourceBc: selectedBroadcaster+1,
+        }),
+      });
+      console.log(JSON.stringify({
+        category: selectedCategory+1,
+        sourceUrl: newsData.sourceUrl,
+        sourceBc: selectedBroadcaster+1,
+      }));
+
+      if (response.ok) {
+        const savedData = await response.json();
+        console.log("저장된 데이터:", savedData);
+        // SavedNews로 뉴스 객체를 전달
+        navigate("/saved-news", { state: savedData });
+        
+      } else {
+        throw new Error("저장 실패");
+      }
+    } catch (error) {
+      console.error("Error saving news:", error);
     }
-
-    // 뉴스 객체 생성
-    const news = {
-      source_url: newsLink,
-      category: selectedCategory,
-      source_bc: selectedBroadcaster,
-    };
-
-    // POST 요청 (경로는 추후 설정 가능)
-    console.log("POST 데이터:", news);
-
-    // 저장 후 화면 이동
-    navigate("/saved-news", { state: news }); // state로 저장된 내용 전달
   };
 
   return (
     <div>
       <Navbar>
-        <button onClick={() => navigate("/")}>전체 목록 보기</button>
       </Navbar>
       <div className="admin-page-container">
         <h2 className="page-title">뉴스 등록</h2>
@@ -43,43 +85,27 @@ const AdminPage = () => {
           <label htmlFor="news-link" className="form-label">뉴스 링크</label>
           <input
             type="text"
-            id="news-link"
+            name="sourceUrl"
             className="form-input"
-            value={newsLink}
-            onChange={(e) => setNewsLink(e.target.value)}
-            placeholder="뉴스 링크를 입력하세요"
+            value={newsData.sourceUrl}
+            onChange={handleInputChange}
           />
         </div>
 
-        <div className="form-section">
-          <p className="form-label">카테고리</p>
-          <div className="form-options">
-            {categories.map((category, index) => (
-              <button
-                key={index}
-                className={`option-button ${selectedCategory === category ? "selected" : ""}`}
-                onClick={() => setSelectedCategory(category)}
-              >
-                {category}
-              </button>
-            ))}
-          </div>
-        </div>
+        <OptionSelector
+        label="카테고리"
+        options={mockData.categories}
+        selectedOption={selectedCategory}
+        setSelectedOption={setSelectedCategory}
+      />
 
-        <div className="form-section">
-          <p className="form-label">출처 방송국</p>
-          <div className="form-options">
-            {source_bc.map((source_bc, index) => (
-              <button
-                key={index}
-                className={`option-button ${selectedBroadcaster === source_bc ? "selected" : ""}`}
-                onClick={() => setSelectedBroadcaster(source_bc)}
-              >
-                {source_bc}
-              </button>
-            ))}
-          </div>
-        </div>
+      {/* 출처 방송국 선택 */}
+      <OptionSelector
+        label="출처 방송국"
+        options={mockData.source_bc}
+        selectedOption={selectedBroadcaster}
+        setSelectedOption={setSelectedBroadcaster}
+      />
 
         <div className="bottom-btn-container">
           <button
