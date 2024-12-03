@@ -1,29 +1,29 @@
 import React, { useState,  useEffect } from "react";
 import Card from "./Card";
 import Navbar from "./Navbar";
+import Loading from "./Loading";
 import "../App.css";
 
 const CardnewsList = () => {
   const [cardnewsList, setCardnewsList] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState(null);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchNews = async () => {
       try {
-        const response = await fetch("http://localhost:8080/api/cardnews/all", {
+        const response = await fetch("/api/api/cardnews/all", {
           method: 'GET',
-          headers: {
-          'Content-Type': 'application/json',
-          },
-          mode: 'cors', // Cross-Origin 요청 허용
         }); // Proxy 설정 적용
         console.log(response)
-        if (!response.ok) throw new Error("Failed to fetch news data");
+        // if (!response.ok) throw new Error("Failed to fetch news data");
         const data = await response.json();
         console.log(data);
         setCardnewsList(data);
       } catch (error) {
         console.error("Error fetching news:", error);
+      } finally {
+        setLoading(false); // 로딩 상태 해제
       }
     };
     fetchNews();
@@ -46,9 +46,15 @@ const CardnewsList = () => {
          selectedCategory={selectedCategory}
          onCategoryClick={toggleCategory}
       />
-      <div className="news-grid">
-      { filteredNews.map((news) => <Card key={news.newsId} news={news} />) }
-      </div>
+      {loading ? ( // 로딩 중일 때
+        <Loading /> // Loading 컴포넌트 렌더링
+      ) : (
+        <div className="news-grid">
+          {filteredNews.map((news) => (
+            <Card key={news.newsId} news={news} />
+          ))}
+        </div>
+    )}
     </div>
   );
 };

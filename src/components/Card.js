@@ -2,12 +2,12 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import "../App.css";
 
-const DEFAULT_IMG = "https://via.placeholder.com/150";
+import DEFAULT_IMG from "../img/default150.png";
 
 const Card = ({ news }) => {
   const navigate = useNavigate(); // useNavigate 훅 사용
   const { newsId, title, cardsPath, newsAt, createdAt } = news; // 나중에 날짜 바꾸기
-  const imageUrl = cardsPath && cardsPath.length > 0 ? cardsPath[0] : DEFAULT_IMG;
+  const imageUrl = cardsPath===null ? DEFAULT_IMG : cardsPath;
 
   const displayDate =
   newsAt || (createdAt && `${createdAt[0]}-${createdAt[1]}-${createdAt[2]}`) || "날짜 정보 없음";

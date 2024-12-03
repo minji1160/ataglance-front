@@ -44,7 +44,7 @@ const AdminPage = () => {
   const handleSubmit = async () => {
 
     try {
-      const response = await fetch("http://localhost:8080/api/news/register", {
+      const response = await fetch("/api/api/news/register", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
