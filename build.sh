@@ -1,5 +1,5 @@
 #!/bin/sh
 cd ../
 mkdir output
-cd -R ./ataglance-front/* ./output
-cd -R ./output ./ataglance-front/
+cp -R ./ataglance-front/* ./output
+cp -R ./output ./ataglance-front/
