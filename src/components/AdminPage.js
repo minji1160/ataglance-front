@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import Navbar from "./Navbar"; // Navbar 재활용
+import Navbar from "./Navbar";
 import { mockData } from "../mockData";
 import "../App.css";
 
@@ -23,9 +23,9 @@ const OptionSelector = ({ label, options, selectedOption, setSelectedOption }) =
 
 const AdminPage = () => {
   const [newsData, setNewsData] = useState({
-    category: "", // 카테고리 인덱스를 저장
+    category: "",
     sourceUrl: "",
-    sourceBc: "", // 출처 인덱스를 저장
+    sourceBc: "",
   });
 
   const [selectedCategory, setSelectedCategory] = useState(null);
@@ -64,11 +64,10 @@ const AdminPage = () => {
       if (response.ok) {
         const savedData = await response.json();
         console.log("저장된 데이터:", savedData);
-        // SavedNews로 뉴스 객체를 전달
         navigate("/saved-news", { state: savedData });
         
       } else {
-        throw new Error("저장 실패");
+        throw new Error("저장오류");
       }
     } catch (error) {
       console.error("Error saving news:", error);
@@ -99,7 +98,6 @@ const AdminPage = () => {
         setSelectedOption={setSelectedCategory}
       />
 
-      {/* 출처 방송국 선택 */}
       <OptionSelector
         label="출처 방송국"
         options={mockData.source_bc}
