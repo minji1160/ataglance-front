@@ -6,6 +6,7 @@
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
+    "gh-pages": "^6.2.0",
     "http-proxy-middleware": "^3.0.3",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
@@ -16,7 +17,7 @@
     "react-scripts": "^5.0.1",
     "web-vitals": "^2.1.4"
   },
-  "proxy": "http://54.163.90.190:8080",
+  "proxy": "https://dafadynssf.execute-api.us-east-1.amazonaws.com/ataglance-stage",
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
