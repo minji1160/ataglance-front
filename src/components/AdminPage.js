@@ -44,30 +44,28 @@ const AdminPage = () => {
   const handleSubmit = async () => {
 
     try {
+      const payload = {
+        category: selectedCategory + 1, // 선택된 카테고리 (1부터 시작)
+        sourceUrl: newsData.sourceUrl.trim(),
+        sourceBc: selectedBroadcaster + 1, // 방송국
+      };
+  
       const response = await fetch("/api/api/news/register", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({
-          category: selectedCategory+1,
-          sourceUrl: newsData.sourceUrl,
-          sourceBc: selectedBroadcaster+1,
-        }),
+        body: JSON.stringify(payload),
       });
-      console.log(JSON.stringify({
-        category: selectedCategory+1,
-        sourceUrl: newsData.sourceUrl,
-        sourceBc: selectedBroadcaster+1,
-      }));
-
+  
+      console.log("Payload:", payload);
       if (response.ok) {
         const savedData = await response.json();
         console.log("저장된 데이터:", savedData);
         navigate("/saved-news", { state: savedData });
-        
       } else {
-        throw new Error("저장오류");
+        const errorData = await response.text();
+        throw new Error(`서버 오류: ${response.status} - ${errorData}`);
       }
     } catch (error) {
       console.error("Error saving news:", error);

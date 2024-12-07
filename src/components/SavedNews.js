@@ -36,7 +36,7 @@ const SavedNews = () => {
             <strong>출처 방송국:</strong> {mockData.source_bc[news.sourceBc - 1]}
           </p>
           <p>
-            <strong>등록 날짜:</strong> {(news.createdAt && `${news.createdAt[0]}-${news.createdAt[1]}-${news.createdAt[2]}`)}
+            <strong>등록 날짜:</strong> {(news.newsAt && `${news.newsAt[0]}-${news.newsAt[1]}-${news.newsAt[2]}`)}
           </p>
         </div>
         <div className="bottom-btn-container">

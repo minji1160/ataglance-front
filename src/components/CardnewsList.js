@@ -42,7 +42,7 @@ const CardnewsList = () => {
   return (
     <div>
       <Navbar
-         categories={["경제", "사회", "생활", "IT"]}
+         categories={["경제", "사회", "생활", "IT/과학"]}
          selectedCategory={selectedCategory}
          onCategoryClick={toggleCategory}
       />

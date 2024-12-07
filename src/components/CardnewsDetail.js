@@ -4,6 +4,7 @@ import Navbar from "./Navbar";
 import Loading from "./Loading"; // 로딩 컴포넌트
 import { mockData } from "../mockData";
 import "../App.css";
+import DEFAULT_IMG from "../img/default400.png";
 
 const CardnewsDetail = () => {
   const { id } = useParams();
@@ -29,6 +30,7 @@ const CardnewsDetail = () => {
         const data = await response.json();
         setNews(data);
         setCurrentIndex(0); // 데이터 로드 후 슬라이드 첫 번째로 초기화
+        console.log(data);
       } catch (err) {
         setError(err.message);
       } finally {
@@ -66,7 +68,8 @@ const CardnewsDetail = () => {
             <h2>#{mockData.categories[news.category - 1]}</h2><br/>
             <h2>{news.title}</h2>
             <p style={{ marginLeft: "auto" }}>
-              {news.newsAt ||
+              {(news.newsAt &&
+                  `${news.newsAt[0]}-${news.newsAt[1]}-${news.newsAt[2]}`) ||
                 (news.createdAt &&
                   `${news.createdAt[0]}-${news.createdAt[1]}-${news.createdAt[2]}`) ||
                 "날짜 정보 없음"}
@@ -83,9 +86,9 @@ const CardnewsDetail = () => {
                 <img
                   className="slider-image"
                   src={
-                    news.cardsPath && currentIndex < news.cardsPath.length
-                      ? news.cardsPath[currentIndex]
-                      : news.cardsPath[currentIndex%news.cardsPath.length]
+                    news.cardsPath && news.cardsPath.length>=2
+                      ? news.cardsPath[currentIndex%news.cardsPath.length]
+                      : DEFAULT_IMG
                   }
                   alt={`slide-${currentIndex}`}
                 />
