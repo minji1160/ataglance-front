@@ -4,6 +4,9 @@ import Navbar from "./Navbar";
 import { mockData } from "../mockData";
 import "../App.css";
 
+const API_BASE_URL = process.env.REACT_APP_API_URL || "https://dafadynssf.execute-api.us-east-1.amazonaws.com/ataglance-stage";
+
+
 const OptionSelector = ({ label, options, selectedOption, setSelectedOption }) => (
   <div className="form-section">
     <p className="form-label">{label}</p>
@@ -50,7 +53,7 @@ const AdminPage = () => {
         sourceBc: selectedBroadcaster + 1, // 방송국
       };
   
-      const response = await fetch("/api/api/news/register", {
+      const response = await fetch(`{$API_BASE_URL}/api/news/register`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

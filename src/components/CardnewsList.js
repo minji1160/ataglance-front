@@ -4,6 +4,9 @@ import Navbar from "./Navbar";
 import Loading from "./Loading";
 import "../App.css";
 
+const API_BASE_URL = process.env.REACT_APP_API_URL || "https://dafadynssf.execute-api.us-east-1.amazonaws.com/ataglance-stage";
+
+
 const CardnewsList = () => {
   const [cardnewsList, setCardnewsList] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState(null);
@@ -12,7 +15,7 @@ const CardnewsList = () => {
   useEffect(() => {
     const fetchNews = async () => {
       try {
-        const response = await fetch("/api/api/cardnews/all", {
+        const response = await fetch(`{$API_BASE_URL}/api/cardnews/all`, {
           method: 'GET',
         }); // Proxy 설정 적용
         console.log(response)

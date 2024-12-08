@@ -6,6 +6,9 @@ import { mockData } from "../mockData";
 import "../App.css";
 import DEFAULT_IMG from "../img/default400.png";
 
+const API_BASE_URL = process.env.REACT_APP_API_URL || "https://dafadynssf.execute-api.us-east-1.amazonaws.com/ataglance-stage";
+
+
 const CardnewsDetail = () => {
   const { id } = useParams();
   const navigate = useNavigate();
@@ -18,7 +21,7 @@ const CardnewsDetail = () => {
     const fetchNews = async () => {
       try {
         setLoading(true); // 로딩 시작
-        const response = await fetch(`/api/api/cardnews/news_id?newsId=${id}`, {
+        const response = await fetch(`{$API_BASE_URL}/api/cardnews/news_id?newsId=${id}`, {
           method: "GET",
           headers: {
             "Content-Type": "application/json",
