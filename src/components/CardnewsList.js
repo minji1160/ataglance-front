@@ -4,8 +4,6 @@ import Navbar from "./Navbar";
 import Loading from "./Loading";
 import "../App.css";
 
-const API_BASE_URL = process.env.REACT_APP_API_URL || "https://dafadynssf.execute-api.us-east-1.amazonaws.com/ataglance-stage";
-
 const CardnewsList = () => {
   const [cardnewsList, setCardnewsList] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState(null);

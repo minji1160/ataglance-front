@@ -33,14 +33,13 @@ body {
 .navbar {
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   position: sticky;
-  top: 10px;
   z-index: 1000;
 }
 
 .banner {
   background-color: #C5D3E8;
   padding: 40px 40px;
-  font-size: 30px;
+  font-size: 28px;
   font-weight: bold;
   text-align: center;
 }
@@ -123,7 +122,8 @@ body {
 /* 기본 컨테이너 */
 .admin-page-container,
 .saved-news-container {
-  max-width: 500px;
+  max-width: 430px;
+  min-width: 340px;
   margin: 0 auto;
   padding: 20px;
   background-color: #f9f9f9;
@@ -188,20 +188,20 @@ body {
 /* 저장 버튼 */
 .save-button,
 .back-button {
-  width: 100%;
-  padding: 10px;
-  background-color: #007bff;
-  color: #fff;
+  width: 150px;
+  background-color: #789DBC; 
+  color: white;
+  padding: 14px 32px;
   border: none;
-  border-radius: 5px;
-  font-size: 16px;
+  border-radius: 20px; 
+  font-size: 20px;
   cursor: pointer;
-  margin-top: 20px;
+  text-align: center;
 }
 
 .save-button:hover,
 .back-button:hover {
-  background-color: #0056b3;
+  background-color: #a2adbe;
 }
 
 /* 저장된 뉴스 섹션 */
@@ -218,6 +218,54 @@ body {
   font-weight: bold;
   margin-bottom: 10px;
 }
+
+
+/* 카드 스타일 */
+.saved-news-card {
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  padding: 10px;
+  max-width: 430px;
+  min-width: 340px;
+  margin-top: 20px;
+}
+
+/* 제목 스타일 */
+.page-title {
+  font-size: 24px;
+  color: #333333;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.news-detail p {
+  margin: 10px 0;
+  font-size: 15px;
+  line-height: 1.5;
+}
+
+.news-detail strong {
+  color: #555555;
+}
+
+/* 링크 스타일 */
+.news-link {
+  color: #1e90ff;
+  text-decoration: none;
+}
+
+.news-link:hover {
+  text-decoration: underline;
+}
+
+.no-data {
+  margin-top: 50px;
+  font-size: 18px;
+  color: #555555;
+  text-align: center;
+}
+
 
 /* ----------------------------------------------------------------- */
 
@@ -240,7 +288,7 @@ body {
   border-radius: 8px;
 }
 .news-grid {
-  margin-top: 20px;
+  margin-top: 15px;
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
   gap:5px;
@@ -283,7 +331,7 @@ body {
   height: 100%;
   background-color: #333; /* 어두운 배경 */
   display: flex;
-  align-items: center;
+  align-items:flex-start;
   justify-content: center;
   overflow: hidden;
 }
@@ -344,11 +392,11 @@ body {
 
 /* 전체 목록으로 돌아가는 버튼 스타일 */
 .bottom-btn-container {
-  position: fixed;
-  bottom: 35px;
+  position:fixed;
+  bottom: 15px;
   left: 50%;
   transform: translateX(-50%);
-  width: 50%;
+  width: 250px;
   padding: 0 16px;
   text-align: center;
 }

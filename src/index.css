@@ -18,7 +18,8 @@ body {
 
 /* React Root의 레이아웃 */
 #root {
-  width: 430px; /* 모바일 기본 너비 */
+  max-width: 430px; /* 모바일 기본 너비 */
+  min-width: 340px;
   height: 100%; /* 높이는 내용에 따라 조정 */
   border: 1px solid #ccc; /* 외곽선으로 강조 */
   background-color: #ffffff;

@@ -6,9 +6,6 @@ import { mockData } from "../mockData";
 import "../App.css";
 import DEFAULT_IMG from "../img/default400.png";
 
-const API_BASE_URL = process.env.REACT_APP_API_URL || "https://dafadynssf.execute-api.us-east-1.amazonaws.com/ataglance-stage";
-
-
 const CardnewsDetail = () => {
   const { id } = useParams();
   const navigate = useNavigate();
@@ -68,16 +65,15 @@ const CardnewsDetail = () => {
       ) : news ? (
         <div className="news-detail">
           <div className="content">
-            <h2>#{mockData.categories[news.category - 1]}</h2><br/>
-            <h2>{news.title}</h2>
-            <p style={{ marginLeft: "auto" }}>
-              {(news.newsAt &&
-                  `${news.newsAt[0]}-${news.newsAt[1]}-${news.newsAt[2]}`) ||
+            <h2 style={{color: "#789DBC"}}>#{mockData.categories[news.category - 1]}</h2><br/>
+            <h2>{news.title}</h2><br/>
+            <p style={{ marginLeft: "auto", fontSize: "15px"}}>
+              등록 일자: {(news.newsAt &&
+                  `${news.newsAt[0]}/${news.newsAt[1]}/${news.newsAt[2]}`) ||
                 (news.createdAt &&
-                  `${news.createdAt[0]}-${news.createdAt[1]}-${news.createdAt[2]}`) ||
+                  `${news.createdAt[0]}/${news.createdAt[1]}/${news.createdAt[2]}`) ||
                 "날짜 정보 없음"}
             </p>
-
             {/* Slider */}
             <div className="slider-container">
               {currentIndex > 0 && (
@@ -116,8 +112,9 @@ const CardnewsDetail = () => {
               href={news.sourceUrl || "#"}
               target="_blank"
               rel="noopener noreferrer"
+              style={{color: "black", textDecoration: "none"}}
             >
-              {news.sourceUrl ? "원본 영상 보기" : "원본 영상 링크 없음"}
+              🔗{news.sourceUrl ? "원본 영상 보기" : "원본 영상 링크 없음"}
             </a>
           </div>
           <div className="bottom-btn-container">
