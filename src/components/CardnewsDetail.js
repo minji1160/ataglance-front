@@ -21,7 +21,7 @@ const CardnewsDetail = () => {
     const fetchNews = async () => {
       try {
         setLoading(true); // 로딩 시작
-        const response = await fetch(`{$API_BASE_URL}/api/cardnews/news_id?newsId=${id}`, {
+        const response = await fetch(`/api/api/cardnews/news_id?newsId=${id}`, {
           method: "GET",
           headers: {
             "Content-Type": "application/json",

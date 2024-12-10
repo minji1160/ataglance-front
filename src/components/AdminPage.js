@@ -53,7 +53,7 @@ const AdminPage = () => {
         sourceBc: selectedBroadcaster + 1, // 방송국
       };
   
-      const response = await fetch(`{$API_BASE_URL}/api/news/register`, {
+      const response = await fetch(`/api/api/news/register`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

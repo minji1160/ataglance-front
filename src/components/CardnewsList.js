@@ -14,8 +14,10 @@ const CardnewsList = () => {
   useEffect(() => {
     const fetchNews = async () => {
       try {
-        const response = await fetch(`{$API_BASE_URL}/api/cardnews/all`, {
+        const response = await fetch("/api/api/cardnews/all", {
           method: 'GET',
+          mode: "cors",
+          cache: "no-cache",
         }); // Proxy 설정 적용
         console.log(response)
         // if (!response.ok) throw new Error("Failed to fetch news data");

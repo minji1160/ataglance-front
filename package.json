@@ -17,7 +17,7 @@
     "react-scripts": "^5.0.1",
     "web-vitals": "^2.1.4"
   },
-  "proxy": "https://dafadynssf.execute-api.us-east-1.amazonaws.com/ataglance-stage",
+  "proxy" : "http://localhost:8080",
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
