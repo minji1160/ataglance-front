@@ -3,7 +3,7 @@
     "rewrites": [
       {
         "source": "/api/:path*",
-        "destination": "https://dafadynssf.execute-api.us-east-1.amazonaws.com/ataglance-stage:path*"
+        "destination": "https://dafadynssf.execute-api.us-east-1.amazonaws.com/ataglance-stage/:path*"
       },
       {
         "source": "/api/:path*/",
