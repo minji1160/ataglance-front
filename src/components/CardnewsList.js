@@ -14,7 +14,7 @@ const CardnewsList = () => {
   useEffect(() => {
     const fetchNews = async () => {
       try {
-        const response = await fetch("/api/api/cardnews/all", {
+        const response = await fetch(API_BASE_URL + "/api/cardnews/all", {
           method: 'GET',
           mode: "cors",
           cache: "no-cache",
