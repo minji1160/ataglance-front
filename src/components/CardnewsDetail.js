@@ -41,7 +41,6 @@ const CardnewsDetail = () => {
   }, [id]);
 
   const slidesLength = Math.max(
-    news?.cardsPath?.length || 0,
     news?.summarySentences?.length || 0
   );
 
@@ -65,8 +64,8 @@ const CardnewsDetail = () => {
       ) : news ? (
         <div className="news-detail">
           <div className="content">
-            <h2 style={{color: "#789DBC"}}>#{mockData.categories[news.category - 1]}</h2><br/>
-            <h2>{news.title}</h2><br/>
+            <h2 style={{color: "#789DBC"}}>#{mockData.categories[news.category - 1]}</h2>
+            <h2>{news.title}</h2>
             <p style={{ marginLeft: "auto", fontSize: "15px"}}>
               등록 일자: {(news.newsAt &&
                   `${news.newsAt[0]}/${news.newsAt[1]}/${news.newsAt[2]}`) ||
@@ -85,7 +84,7 @@ const CardnewsDetail = () => {
                 <img
                   className="slider-image"
                   src={
-                    news.cardsPath && news.cardsPath.length>=2
+                    news.cardsPath && news.cardsPath.length>0
                       ? news.cardsPath[currentIndex%news.cardsPath.length]
                       : DEFAULT_IMG
                   }
